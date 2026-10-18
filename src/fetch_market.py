@@ -1,13 +1,15 @@
 """
 Fetch the market data used in Steps 6-7, so it never has to be collected by hand.
 
-  - VIX (market fear gauge) and Bitcoin price, daily, from FRED (free, no key needed)
+  - VIX (market fear gauge) and Bitcoin price, daily, from Yahoo Finance
+    (falls back to FRED, which is free but often slow)
     -> averaged per quarter -> data/raw/market_conditions_fred.csv
   - Share price, market cap and revenue multiples for Robinhood and its peers, from Yahoo
     Finance via the yfinance package -> data/raw/valuation_snapshot.csv
 
 Run:  python src/fetch_market.py
 """
+import time
 from datetime import date
 from io import StringIO
 from pathlib import Path
@@ -20,9 +22,32 @@ RAW = ROOT / "data" / "raw"
 RAW.mkdir(parents=True, exist_ok=True)
 
 
-def fred(series):
-    url = f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}"
-    text = urlopen(Request(url, headers={"User-Agent": "Mozilla/5.0"}), timeout=60).read().decode()
+START = "2021-04-01"
+
+
+def yahoo(ticker):
+    """Daily closing prices from Yahoo Finance (fast, usually reliable)."""
+    import yfinance as yf
+    s = yf.download(ticker, start=START, progress=False, auto_adjust=False)["Close"]
+    s = s.squeeze()                      # newer yfinance returns a one-column frame
+    if s.empty:
+        raise ValueError(f"no data for {ticker}")
+    s.index = pd.to_datetime(s.index).tz_localize(None)
+    return s
+
+
+def fred(series, tries=3):
+    """Fallback: FRED CSV, only from 2021 on (smaller file), with retries."""
+    url = f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}&cosd={START}"
+    for attempt in range(1, tries + 1):
+        try:
+            text = urlopen(Request(url, headers={"User-Agent": "Mozilla/5.0"}), timeout=180).read().decode()
+            break
+        except Exception as e:
+            print(f"  FRED {series} attempt {attempt} failed: {e}")
+            if attempt == tries:
+                raise
+            time.sleep(5 * attempt)
     df = pd.read_csv(StringIO(text))
     df.columns = ["date", series]
     df["date"] = pd.to_datetime(df["date"])
@@ -30,10 +55,21 @@ def fred(series):
     return df.dropna().set_index("date")[series]
 
 
+def get(yahoo_ticker, fred_series):
+    try:
+        s = yahoo(yahoo_ticker)
+        print(f"  {yahoo_ticker}: {len(s)} days from Yahoo Finance")
+        return s
+    except Exception as e:
+        print(f"  Yahoo {yahoo_ticker} failed ({e}); trying FRED {fred_series}")
+        return fred(fred_series)
+
+
 def market_conditions():
-    vix, btc = fred("VIXCLS"), fred("CBBTCUSD")
+    vix, btc = get("^VIX", "VIXCLS"), get("BTC-USD", "CBBTCUSD")
     q = pd.DataFrame({"vix_avg": vix.resample("QE").mean(), "btc_avg_usd": btc.resample("QE").mean()})
-    q = q.loc["2021-04-01":]
+    q = q.loc[START:]
+    q = q[q.index < pd.Timestamp.today().to_period("Q").start_time]   # drop the unfinished quarter
     q.index = q.index.to_period("Q").astype(str)   # e.g. 2021Q2
     q.index.name = "quarter"
     q.round(2).to_csv(RAW / "market_conditions_fred.csv")
