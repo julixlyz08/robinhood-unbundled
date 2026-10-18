@@ -124,6 +124,43 @@ Only like-for-like metrics are compared (full table in `outputs/competitive_scor
 
 The "so what": in trading, Robinhood wins on **price and product breadth, not on margin per trade**. Its growth comes from taking activity away from competitors. In prediction markets, its real upside depends on moving from *distributor* to *exchange owner*.
 
+### Step 6: Revenue quality (2021Q2–2026Q2)
+For each vertical, quarterly revenue was regressed on a time trend, the VIX (market fear) and the Bitcoin price, all in logs. The fit splits each line's ups and downs into steady growth, market mood, and other factors:
+
+| Line | Steady growth | Market mood | Other (launches, one-offs) | If Bitcoin falls 30% |
+|---|---|---|---|---|
+| Options | 64% | 23% | 13% | −14% (−$49M/qtr) |
+| Equities | 39% | 35% | 26% | −23% (−$30M/qtr) |
+| Crypto | 27% | 41% | 32% | −37% (−$37M/qtr) |
+| Subscriptions & Banking | 60% | 10% | 30% | −13% (−$19M/qtr) |
+
+What it means:
+- **The Bitcoin price is the swing factor, not the VIX.** VIX is never statistically significant. Bitcoin is significant for every line, including options and equities, which suggests it works as a gauge of retail risk appetite.
+- **A 30% Bitcoin drop takes about $135M a quarter (19%) off the five verticals**, not just off crypto. Crypto is only about a quarter of that hit.
+- **Subscriptions & Banking is the steadiest revenue**, and options are steadier than they look. Crypto is the least predictable.
+- Caveats: 21 quarters is a short history, the trend is fitted before market mood (so the split depends on that order), and net interest is driven by interest rates, which aren't in the model. Its results are shown for reference only.
+
+### Step 7: Sum-of-the-parts valuation (prices at Oct 16, 2026 close)
+Each vertical is valued at its closest listed peers' enterprise value ÷ next-year revenue. FY2027 revenue uses the analyst consensus ($6.85B), split by our forecast mix.
+
+| Line | FY27 revenue | Multiple (low–base–high) | Value, base |
+|---|---|---|---|
+| Options | $1.9B | 4.1–10.0–15.8× (Schwab–IBKR) | $19B |
+| Equities | $0.7B | same | $6B |
+| Crypto | $0.6B | 5.0–6.2–7.5× (Coinbase) | $3B |
+| Prediction markets | $0.9B | 5.5–11.6–14.6× (Kalshi round–exchanges–CME) | $10B |
+| Subscriptions & Banking | $0.8B | 3.1–5.5–8.0× (SoFi–judgment) | $4B |
+| Net interest + other transaction | $2.1B | | $10B |
+| Net cash | | | $3B |
+| **Sum of parts** | | | **$30B / $57B / $82B** |
+| **Market cap** | | | **$89B ($98.87/share)** |
+
+The "so what":
+- **Even with every vertical at its *most generous* peer multiple, the parts add up to less than the stock price.** The market isn't valuing Robinhood as a collection of brokers, a crypto exchange and a bank. It is paying about **$32B above the base case for growth and for things that barely show up in revenue yet**: Rothera, international expansion, Trump Accounts, tokenization.
+- Put the whole premium on prediction markets and the market implies about **48× revenue, or ~$43B, for that vertical alone**. That's about twice Kalshi's last private valuation, for a business that is mostly a *distributor* of Kalshi's contracts.
+- **Adjusted for growth, it looks reasonable.** Robinhood trades at 12.5× forward revenue with about 39% expected growth, roughly 0.32× per growth point. That's cheaper than IBKR (0.60), Coinbase (0.40) and the exchanges, and dearer than Schwab (0.23) and SoFi (0.07). **The stock is a bet that ~30%+ growth continues.**
+- Full tables are in `outputs/sotp.csv` and `outputs/growth_adjusted_multiples.csv`.
+
 ## Data sources
 
 - Robinhood quarterly earnings releases (investors.robinhood.com, SEC 8-K Exhibit 99.1)
