@@ -111,6 +111,19 @@ Scenarios (in `src/vertical_pnl.py`):
 - **subs_heavy**: 1.5× marketing weight on Subscriptions & Banking
 - **card_adjusted**: $25M a quarter of card income moved from net interest to Subscriptions & Banking
 
+### Step 5: Competitiveness (Q2 2026 vs Q2 2025)
+Only like-for-like metrics are compared (full table in `outputs/competitive_scorecard.csv`).
+
+| Vertical | Robinhood | Rivals | Verdict |
+|---|---|---|---|
+| Options | contracts +50% | IBKR +17%, Webull +68% (smaller base) | **Gaining share**: 50% → 54% of contracts across the three |
+| Equities | notional +85% | Webull +73%; trade counts: Schwab +57%, IBKR +36% | **Gaining share**, growing fastest among the large brokers |
+| Crypto | retail volume −36%; take rate ~55 bps | Coinbase retail volume −38%; take rate ~175 bps | **Holding share** in a down market, as the *cheap* option: about a third of Coinbase's price per dollar traded. Bitstamp ($22B) is still small next to Coinbase institutional ($121B) |
+| Prediction markets | ~$624M annualized revenue | Coinbase "$100M+"; Kalshi ~$4B run-rate and Polymarket "$1B+" (press reports) | **Leading broker distributor**, about 6× Coinbase. The exchanges capture far more of the economics, which is exactly why Robinhood launched its own (Rothera) |
+| Subscriptions & Banking | Gold +37%, other revenues +54% | SoFi members +35%, financial-services revenue +29% | **Growing faster than SoFi** on revenue, from a smaller base |
+
+The "so what": in trading, Robinhood wins on **price and product breadth, not on margin per trade**. Its growth comes from taking activity away from competitors. In prediction markets, its real upside depends on moving from *distributor* to *exchange owner*.
+
 ## Data sources
 
 - Robinhood quarterly earnings releases (investors.robinhood.com, SEC 8-K Exhibit 99.1)
