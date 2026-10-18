@@ -84,10 +84,10 @@ def valuation_snapshot():
         rows.append({
             "ticker": ticker, "date": date.today().isoformat(),
             "share_price": info.get("currentPrice"),
-            "market_cap_b": (info.get("marketCap") or 0) / 1e9,
-            "enterprise_value_b": (info.get("enterpriseValue") or 0) / 1e9,
-            "ttm_revenue_m": (info.get("totalRevenue") or 0) / 1e6,
-            "ttm_ebitda_m": (info.get("ebitda") or 0) / 1e6,
+            "market_cap_b": (info.get("marketCap") or float("nan")) / 1e9,
+            "enterprise_value_b": (info.get("enterpriseValue") or float("nan")) / 1e9,
+            "ttm_revenue_m": (info.get("totalRevenue") or float("nan")) / 1e6,
+            "ttm_ebitda_m": (info.get("ebitda") or float("nan")) / 1e6,
             "forward_pe": info.get("forwardPE"),
             "ev_to_ttm_revenue": info.get("enterpriseToRevenue"),
         })

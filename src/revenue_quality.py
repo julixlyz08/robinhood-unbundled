@@ -24,7 +24,7 @@ import statsmodels.api as sm
 
 ROOT = Path(__file__).resolve().parents[1]
 q = pd.read_csv(ROOT / "data/processed/quarters.csv")
-mkt = pd.read_csv(ROOT / "data/raw/market_conditions.csv")
+mkt = pd.read_csv(ROOT / "data/raw/market_conditions_fred.csv")
 df = q.merge(mkt, on="quarter", how="inner").reset_index(drop=True)
 df["t"] = np.arange(len(df))
 df["log_vix"] = np.log(df.vix_avg)
