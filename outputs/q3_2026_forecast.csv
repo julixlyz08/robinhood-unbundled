@@ -1,0 +1,9 @@
+vertical,driver,q3_volume,unit,take_rate_low,take_rate_base,take_rate_high,rev_low,rev_base,rev_high
+Options,options contracts (M),905.8,$/contract,0.425,0.442,0.459,385,400,415
+Equities,equity notional ($B),998.0,bps,1.248,1.349,1.451,125,135,145
+Crypto,app crypto notional ($B) (+ Bitstamp),20.4,app bps,49.421,54.912,60.404,103,114,125
+Prediction markets,event contracts (B),16.3,cents/contract,0.975,1.147,1.319,159,187,215
+Subscriptions & Banking,"Gold subscribers (M, est.)",5.3,,,,,143,158,171
+Other transaction (not analyzed),,,,,,,47,49,51
+Net interest (not analyzed),,,,,,,370,389,408
+TOTAL NET REVENUE,,,,,,,1332,1432,1530
