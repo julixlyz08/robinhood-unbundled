@@ -50,6 +50,13 @@ for name, col in LINES.items():
         "btc_elasticity": full.params["log_btc"], "btc_pvalue": full.pvalues["log_btc"],
     })
 res = pd.DataFrame(rows)
+
+# Stress test: what happens to each line's quarterly revenue if Bitcoin falls 30%
+# (VIX held constant)? Uses the estimated elasticities on Q2 2026 revenue.
+q2 = q.set_index("quarter").loc["2026Q2"]
+res["q2_2026_revenue"] = [q2[c] for c in LINES.values()]
+res["btc_minus30_change_pct"] = (0.7 ** res.btc_elasticity - 1) * 100
+res["btc_minus30_change_m"] = res.q2_2026_revenue * res.btc_minus30_change_pct / 100
 res.to_csv(ROOT / "outputs/revenue_quality.csv", index=False)
 
 if __name__ == "__main__":
