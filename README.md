@@ -79,6 +79,38 @@ Method: monthly activity for Jul–Aug, plus September scaled up from the Sep 1�
 
 How trustworthy is this? The method was backtested over nine quarters: options were off by **3.8%** on average and equities by **7.5%**. The September scale-up was tested on September 2025 and landed within about 1% of the actual numbers. Prediction markets and Subscriptions & Banking have the least history and the widest ranges.
 
+### Step 4: Profit per vertical (Q2 2026)
+Costs are split into **direct** costs, which a vertical causes, and **shared** platform costs, which are split by revenue. Two margins come out of that:
+
+| Line | Revenue | Contribution margin | Operating margin (base) | Range across scenarios |
+|---|---|---|---|---|
+| Options | $342M | 92% | 45% | 45–47% |
+| Equities | $129M | 92% | 45% | 45–47% |
+| Crypto | $100M | 92% | 45% | 41–45% |
+| Prediction markets | $156M | 92% | 45% | 41–45% |
+| Subscriptions & Banking | $143M | 61% | 14% | 10–20% |
+| *Net interest (not analyzed)* | $389M | 100% | 53% | |
+| **Company** | **$1,308M** | | **44%** | |
+
+What it means:
+- **The trading verticals cost almost nothing at the margin.** Direct costs are about 8% of revenue, so each extra trade is nearly pure profit. Profitability comes from spreading a fixed platform over more activity.
+- **Subscriptions & Banking is the least profitable vertical today**, mainly because of Gold Card credit losses ($56M). Even after moving card interest income back from net interest, it reaches only about 20%. It works as an acquisition and retention engine: about 40% of new customers sign up for Gold.
+- **The fully-loaded margins of the trading verticals are almost identical by construction**, because shared costs are split by revenue. Robinhood doesn't disclose anything that would let anyone separate them further, so they aren't presented as more precise than that.
+
+**Operating leverage is fading.** Incremental margin is the change in operating profit divided by the change in revenue, year over year, with one-off items removed:
+
+| | 2024Q2–2025Q3 | 2025Q4 | 2026Q1 | 2026Q2 |
+|---|---|---|---|---|
+| Share of each new revenue $ reaching operating profit | 69–87¢ | 55¢ | 29¢ | 50¢ |
+
+Costs are now growing about 33% a year as Robinhood funds its own exchange (Rothera), Trump Accounts, international expansion and acquisitions. Whether that spending pays off is central to the thesis.
+
+Scenarios (in `src/vertical_pnl.py`):
+- **base**: shared costs split by revenue
+- **costly_new**: crypto and prediction markets carry double the transaction costs
+- **subs_heavy**: 1.5× marketing weight on Subscriptions & Banking
+- **card_adjusted**: $25M a quarter of card income moved from net interest to Subscriptions & Banking
+
 ## Data sources
 
 - Robinhood quarterly earnings releases (investors.robinhood.com, SEC 8-K Exhibit 99.1)
