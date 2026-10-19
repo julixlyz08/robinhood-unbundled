@@ -4,6 +4,10 @@
 
 ---
 
+**Read the research note:** [markdown](note/robinhood_unbundled.md) · [PDF](note/robinhood_unbundled.pdf) · [Interactive dashboard](https://public.tableau.com/app/profile/julie.loyez/viz/RobinhoodUnbundled/RobinhoodUnbundled)
+
+---
+
 ## The problem this project solves
 
 Robinhood reports *revenue* by product (options, equities, crypto, event contracts, other), but it reports profit for the company as a whole. Nobody outside the company can download "options operating margin" or "how profitable are prediction markets."
@@ -74,7 +78,7 @@ Method: monthly activity for Jul–Aug, plus September scaled up from the Sep 1�
 | Crypto | $100M | $114M | $103–125M |
 | Prediction markets | $156M | $187M | $159–215M |
 | Subscriptions & Banking | $143M | $158M | $143–171M |
-| *Other transaction + net interest (not analyzed, held flat)* | $438M | $438M | |
+| *Other transaction + net interest (not analyzed, held near Q2 ±5%)* | $438M | $438M | $417–459M |
 | **Total net revenue** | **$1,308M** | **$1,432M** | **$1,332–1,530M** |
 
 How trustworthy is this? The method was backtested over nine quarters: options were off by **3.8%** on average and equities by **7.5%**. The September scale-up was tested on September 2025 and landed within about 1% of the actual numbers. Prediction markets and Subscriptions & Banking have the least history and the widest ranges.
@@ -136,7 +140,7 @@ For each vertical, quarterly revenue was regressed on a time trend, the VIX (mar
 
 What it means:
 - **The Bitcoin price is the swing factor, not the VIX.** VIX is never statistically significant. Bitcoin is significant for every line, including options and equities, which suggests it works as a gauge of retail risk appetite.
-- **A 30% Bitcoin drop takes about $135M a quarter (19%) off the five verticals**, not just off crypto. Crypto is only about a quarter of that hit.
+- **A 30% Bitcoin drop takes about $135M a quarter (19%) off the four verticals tested** (options, equities, crypto, Subscriptions & Banking), not just off crypto. Crypto is only about a quarter of that hit.
 - **Subscriptions & Banking is the steadiest revenue**, and options are steadier than they look. Crypto is the least predictable.
 - Caveats: 21 quarters is a short history, the trend is fitted before market mood (so the split depends on that order), and net interest is driven by interest rates, which aren't in the model. Its results are shown for reference only.
 
