@@ -116,23 +116,23 @@ for yi, v in zip(y, VERTICALS):
 ax.set_yticks(y); ax.set_yticklabels(VERTICALS, color=INK); ax.tick_params(axis="y", length=0)
 ax.set_xlim(0, 70); ax.xaxis.set_major_formatter(lambda v, _: f"{v:.0f}%")
 ax.xaxis.grid(True, color=GRID); ax.set_axisbelow(True)
-ax.set_title("Estimated operating margin, Q2 2026\n(black line = range across cost scenarios)", loc="left", fontsize=10.5, color=INK2)
+ax.set_title("Share of revenue kept as operating profit, Q2 2026 (estimate)\nBlack line = range under alternative cost-split rules", loc="left", fontsize=10.5, color=INK2)
 inc2 = inc[inc.quarter >= "2024Q2"]
 ax2.plot(inc2.quarter, inc2.incremental_margin_adj * 100, color=INK, lw=2.2, marker="o", ms=5)
 for xq, v in zip(inc2.quarter, inc2.incremental_margin_adj * 100):
-    ax2.text(xq, v + 5.5, f"{v:.0f}%", ha="center", fontsize=8.5, color=INK2)
-ax2.set_ylim(0, 100); ax2.yaxis.set_major_formatter(lambda v, _: f"{v:.0f}%")
+    ax2.text(xq, v + 5.5, f"{v:.0f}¢", ha="center", fontsize=8.5, color=INK2)
+ax2.set_ylim(0, 100); ax2.yaxis.set_major_formatter(lambda v, _: f"{v:.0f}¢")
 ax2.tick_params(axis="x", labelsize=8, rotation=45)
 ax2.yaxis.grid(True, color=GRID); ax2.set_axisbelow(True)
-ax2.set_title("Incremental margin: share of each new revenue $\nreaching operating profit (YoY, one-offs removed)", loc="left", fontsize=10.5, color=INK2)
-f.text(0.01, 0.97, "Profitability: trading is highly profitable; operating leverage is fading", fontsize=15, fontweight="bold", color=INK, va="top")
+ax2.set_title("For each extra $1 of revenue vs a year earlier,\nhow many cents became operating profit", loc="left", fontsize=10.5, color=INK2)
+f.text(0.01, 0.97, "Trading keeps ~45% of revenue as profit, but new revenue now adds less profit", fontsize=15, fontweight="bold", color=INK, va="top")
 f.text(0.01, 0.015, "Source: Robinhood earnings releases; author's cost allocation (see methodology).", fontsize=8.5, color=MUTED)
 plt.subplots_adjust(left=0.19, right=0.98, top=0.77, bottom=0.17, wspace=0.3)
 save(f, "fig3_margins.png")
 
 # ---- 4. competitiveness -------------------------------------------------------------
 comp = [("Options\n(contracts traded)", [("Robinhood", 50), ("IBKR", 17), ("Webull", 68)]),
-        ("Equities\n(notional or trades)", [("Robinhood", 85), ("Webull", 73), ("Schwab", 57), ("IBKR", 36)]),
+        ("Equities\n($ traded or trades)", [("Robinhood", 85), ("Webull", 73), ("Schwab", 57), ("IBKR", 36)]),
         ("Crypto\n(retail volume)", [("Robinhood", -36), ("Coinbase", -38)]),
         ("Subscriptions & Banking\n(revenue)", [("Robinhood", 54), ("SoFi", 29), ("Coinbase", -12)])]
 vcol = [COL["Options"], COL["Equities"], COL["Crypto"], COL["Subscriptions & Banking"]]
@@ -153,11 +153,12 @@ ax.set_yticks(range(len(comp))); ax.set_yticklabels([c[0] for c in comp][::-1], 
 ax.tick_params(axis="y", length=0)
 ax.set_xlim(-55, 100); ax.set_ylim(-0.7, len(comp) - 0.4)
 ax.xaxis.set_major_formatter(lambda v, _: f"{v:+.0f}%")
+ax.set_xlabel("Growth vs a year earlier", fontsize=9.5, color=INK2)
 ax.xaxis.grid(True, color=GRID); ax.set_axisbelow(True)
-titles(f, "Competitiveness: growth vs rivals, Q2 2026 vs Q2 2025",
-       "Filled dot = Robinhood. Robinhood grows faster than the large incumbents in every trading line.",
-       "Source: company earnings releases; author's analysis. Schwab and IBKR equities = daily average trades (all products).")
-plt.subplots_adjust(left=0.2, right=0.98, top=0.82, bottom=0.12)
+titles(f, "Robinhood is growing faster than its large competitors",
+       "Growth from Q2 2025 to Q2 2026 in trading activity (or revenue, for Subscriptions & Banking).",
+       "Source: company earnings releases. Equities: dollar value traded for Robinhood and Webull; number of trades for Schwab and IBKR.")
+plt.subplots_adjust(left=0.2, right=0.98, top=0.82, bottom=0.17)
 save(f, "fig4_competition.png")
 
 # ---- 5. trading-volume stress test ---------------------------------------------------
@@ -175,17 +176,17 @@ for _, rr in u[u.vol.isin([-30, -50])].iterrows():
     ax.text(rr.vol, rr.op_profit_change_pct - 6.5, f"{rr.op_profit_change_pct:.0f}%", ha="center", fontsize=8.5, color=INK, fontweight="bold")
 rp = co[co.scenario == "2022 replay"].iloc[0]
 ax.scatter([-38], [rp.op_profit_change_pct], marker="D", s=50, color="#e34948", zorder=4)
-ax.text(-39.5, rp.op_profit_change_pct + 1, f"2022 replay: {rp.op_profit_change_pct:.0f}%  ", ha="right", fontsize=8.5, color="#e34948")
+ax.text(-39.5, rp.op_profit_change_pct + 1, f"repeat of 2022: {rp.op_profit_change_pct:.0f}%  ", ha="right", fontsize=8.5, color="#e34948")
 ax.set_xlim(-55, 3); ax.set_ylim(-75, 8)
 ax.xaxis.set_major_formatter(lambda v, _: f"{v:.0f}%"); ax.yaxis.set_major_formatter(lambda v, _: f"{v:.0f}%")
-ax.set_xlabel("Change in trading volume (all trading lines)", fontsize=9)
+ax.set_xlabel("Change in trading activity", fontsize=9)
 ax.yaxis.grid(True, color=GRID); ax.set_axisbelow(True); ax.axhline(0, color=BASE, lw=1)
 ax.legend(loc="lower right", frameon=False, fontsize=9)
-ax.set_title("Profit falls about 2x faster than revenue", loc="left", fontsize=10.5, color=INK2)
+ax.set_title("Change in revenue and operating profit vs Q2 2026:\nprofit falls about twice as fast as revenue", loc="left", fontsize=10.5, color=INK2)
 vs = ["Options", "Equities", "Crypto", "Prediction markets", "Subscriptions & Banking"]
 y = np.arange(len(vs))[::-1]
-ax2.barh(y + 0.18, ve.loc[vs, "op_profit_q2_2026"], height=0.34, color=[COL[v] for v in vs], alpha=0.35)
-ax2.barh(y - 0.18, ve.loc[vs, "op_profit_at_minus30"], height=0.34, color=[COL[v] for v in vs])
+ax2.barh(y + 0.18, ve.loc[vs, "op_profit_q2_2026"], height=0.34, color=[COL[v] for v in vs])
+ax2.barh(y - 0.18, ve.loc[vs, "op_profit_at_minus30"], height=0.34, color=[COL[v] for v in vs], alpha=0.35)
 for yi, v in zip(y, vs):
     a, b = ve.loc[v, ["op_profit_q2_2026", "op_profit_at_minus30"]]
     ax2.text(a + 2, yi + 0.18, f"${a:.0f}M", va="center", fontsize=8.5, color=INK2)
@@ -194,10 +195,10 @@ for yi, v in zip(y, vs):
 ax2.set_yticks(y); ax2.set_yticklabels(vs, color=INK, fontsize=9.5); ax2.tick_params(axis="y", length=0)
 ax2.set_xlim(0, 215); ax2.xaxis.set_major_formatter(lambda v, _: f"${v:.0f}M")
 ax2.xaxis.grid(True, color=GRID); ax2.set_axisbelow(True)
-ax2.set_title("Est. operating profit per vertical: Q2 2026 (light)\nvs trading volume -30% (dark)", loc="left", fontsize=10.5, color=INK2)
-f.text(0.01, 0.97, "If customers trade less: a 30% volume drop cuts operating profit by 37%", fontsize=15, fontweight="bold", color=INK, va="top")
-f.text(0.01, 0.015, "Base: Q2 2026. Take rates held constant; transaction costs move with revenue (8%), all other costs fixed;\n"
-       "Subscriptions & Banking and net interest held constant. 2022 replay = each line's 2021Q4-to-trough drop.", fontsize=8, color=MUTED)
+ax2.set_title("Estimated operating profit per business, per quarter:\nQ2 2026 actual (dark) vs if trading fell 30% (light)", loc="left", fontsize=10.5, color=INK2)
+f.text(0.01, 0.97, "If customers trade 30% less, Robinhood's operating profit falls 37%", fontsize=15, fontweight="bold", color=INK, va="top")
+f.text(0.01, 0.015, "Starting point: Q2 2026. Robinhood earns the same per trade; only exchange and clearing fees (8% of trading revenue) shrink with trading,\n"
+       "all other costs stay the same. Subscriptions & Banking and net interest unchanged. Repeat of 2022 = each business falls as much as it did then.", fontsize=8, color=MUTED)
 plt.subplots_adjust(left=0.07, right=0.98, top=0.8, bottom=0.2, wspace=0.42)
 save(f, "fig5_volume_stress.png")
 
