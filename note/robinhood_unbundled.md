@@ -12,7 +12,7 @@ Julie Loyez · [Interactive dashboard](https://public.tableau.com/app/profile/ju
 
 Robinhood tells investors how much revenue each of its products brings in, but only reports profit for the company as a whole. This note splits Robinhood into five businesses and asks the same questions of each: does it make money, how much does it earn per trade or customer, is it beating its competitors, is it growing, and what is it worth?
 
-| Business line | Q2 2026 revenue | Growth vs a year earlier | Est. profit margin | Est. value |
+| Business line | Revenue, Q2 2026 (Apr–Jun) | Growth vs Q2 2025 | Est. profit margin | Est. value |
 |---|---|---|---|---|
 | Options | $342M | +29% | ~45% | $19.0B |
 | Equities (stocks) | $129M | +95% | ~45% | $6.4B |
@@ -24,10 +24,10 @@ Robinhood tells investors how much revenue each of its products brings in, but o
 
 **Six findings:**
 
-1. **Trading revenue grows because people trade more, not because Robinhood charges more.** Robinhood earns about $0.44 per options contract, roughly the same as two years ago. Revenue rises because customers trade more, and more of that trading happens at Robinhood: among the brokers that publish comparable numbers, its share of options contracts rose from 50% to 54% in a year.
+1. **Trading revenue grows because people trade more, not because Robinhood charges more.** Robinhood earns about $0.44 per options contract, roughly the same as in early 2024. Revenue rises because customers trade more, and more of that trading happens at Robinhood: among the brokers that publish comparable numbers, its share of options contracts rose from 50% in Q2 2025 to 54% in Q2 2026.
 2. **Each extra trade is almost pure profit.** The costs that come with each trade (exchange and clearing fees) are only about 8% of trading revenue. Everything else, such as engineers, offices and marketing, costs the same whether customers trade a little or a lot.
 3. **But growth is now turning into less profit than before.** From mid-2024 to Q3 2025, every extra $1 of revenue (compared with a year earlier) added 69–87¢ of operating profit. In the last three quarters it added only 29–55¢, because Robinhood's costs grew 33% in a year as it spent on new projects.
-4. **Prediction markets already bring in more than crypto** ($156M vs $100M in Q2 2026), about a year after launch. Robinhood mostly resells contracts from exchanges like Kalshi, which keep most of the money; that's why it launched its own exchange, Rothera, in June.
+4. **Prediction markets already bring in more than crypto:** $156M vs $100M in Q2 2026 (April–June), about a year after launch. Until June, Robinhood mostly offered contracts listed on other companies' exchanges, mainly Kalshi, and those exchanges charge their own fees; that's why Robinhood launched its own exchange, Rothera, in June 2026.
 5. **If customers trade less, profit falls twice as fast as revenue.** Since most costs don't shrink with trading, a 30% drop in trading would cut revenue by 18% but operating profit by 37%. Robinhood would still be profitable unless trading fell about 80%.
 6. **The stock is priced well above what its businesses are worth at competitors' prices.** Valuing each of the five businesses like its closest listed competitor gives about $57B in total; the stock market values Robinhood at $89B. Investors are paying about $32B extra, betting that Robinhood keeps growing ~30% a year.
 
@@ -35,6 +35,7 @@ Robinhood tells investors how much revenue each of its products brings in, but o
 
 ### Terms used in this note
 
+- **Quarters:** Q2 2026 means April–June 2026; Q3 2026 means July–September 2026. Unless stated otherwise, growth compares Q2 2026 with the same quarter a year earlier, Q2 2025.
 - **Take rate:** what Robinhood earns per unit of customer activity: dollars per options contract, or cents per $100 of stock or crypto traded.
 - **Basis point (bp):** one hundredth of one percent. Earning 1 bp on $10,000 of stock traded means earning $1.
 - **Notional volume:** the dollar value of what customers trade. Buying $5,000 of Apple stock is $5,000 of notional volume.
@@ -56,13 +57,13 @@ Looking at Robinhood as one business hides that its products behave very differe
 
 ## 2. Options
 
-**Profitability.** Options are Robinhood's largest business: $342M in Q2 2026, 26% of all revenue, and an estimated $154M of operating profit, the most of the five businesses.
+**Profitability.** Options are Robinhood's largest business: $342M of revenue in Q2 2026 (April–June), 26% of all revenue, and an estimated $154M of operating profit, the most of the five businesses.
 
 **Earnings per trade.** Robinhood earns about **$0.44 per contract** traded, within a $0.44–0.52 range since 2024. It peaked at $0.51 in Q2 2025 and has drifted down since.
 
-**Competitiveness.** Customers traded **50% more contracts** than a year earlier, against +17% at Interactive Brokers and +68% at Webull (which is much smaller). Of all the contracts traded across these three brokers, Robinhood's share rose from 50% to 54%.
+**Competitiveness.** Robinhood customers traded 774 million options contracts in Q2 2026, **50% more** than the 515 million in Q2 2025. Over the same period, contracts traded grew 17% at Interactive Brokers and 68% at Webull (which is much smaller). Of all the contracts traded across these three brokers, Robinhood's share rose from 50% in Q2 2025 to 54% in Q2 2026.
 
-**Growth.** Revenue grew 29% while the number of contracts traded grew 50%. The gap is the drop in earnings per contract ($0.51 → $0.44): Robinhood made a bit less on each contract but handled far more of them.
+**Growth.** From Q2 2025 to Q2 2026, options revenue grew 29% ($265M → $342M) while the number of contracts traded grew 50%. The gap is the drop in earnings per contract ($0.51 → $0.44): Robinhood made a bit less on each contract but handled far more of them.
 
 ![Take rates](figures/fig2_take_rates.png)
 
@@ -70,35 +71,37 @@ Looking at Robinhood as one business hides that its products behave very differe
 
 ## 3. Equities (stocks)
 
-**Profitability.** $129M in Q2 2026 and an estimated $58M of operating profit.
+**Profitability.** $129M of revenue in Q2 2026 and an estimated $58M of operating profit.
 
 **Earnings per trade.** About **1.35 bps** of the dollar value traded, or $13.50 for every $100,000 of stock customers buy or sell. That's down from 1.7 bps in early 2024, and stable since mid-2024.
 
-**Competitiveness.** The dollar value of stock traded on Robinhood grew **85%** in a year, more than at Webull (+73%). Schwab and Interactive Brokers only publish the number of trades, not their dollar value; their trade counts grew 57% and 36%. By either measure, Robinhood is growing fastest among the large brokers.
+**Competitiveness.** Robinhood customers bought and sold $956B of stocks in Q2 2026, **85% more** than the $517B in Q2 2025. That's faster growth than at Webull (+73% over the same period). Schwab and Interactive Brokers only publish the number of trades, not their dollar value; their number of trades grew 57% and 36% from Q2 2025 to Q2 2026. By either measure, Robinhood is growing fastest among the large brokers.
 
-**Growth.** Revenue grew 95% while the dollar value traded grew 85%, so Robinhood also earned slightly more per dollar traded than a year earlier. This was the fastest-growing of the older trading lines.
+**Growth.** From Q2 2025 to Q2 2026, stock-trading revenue grew 95% ($66M → $129M) while the value of stock traded grew 85%, so Robinhood also earned slightly more per dollar traded. This was the fastest-growing of the older trading lines.
 
 ---
 
 ## 4. Crypto
 
-**Profitability.** $100M in Q2 2026 (−38% from a year earlier) and an estimated $45M of operating profit.
+**Profitability.** $100M of revenue in Q2 2026, down 38% from $160M in Q2 2025, and an estimated $45M of operating profit.
 
 **Earnings per trade.** Looking at Robinhood's total crypto revenue divided by total crypto traded, it seems Robinhood now earns much less per trade: about 25 bps, down from 55 bps in mid-2025. That's misleading. In June 2025 Robinhood bought **Bitstamp**, a crypto exchange for professional investors that charges far lower fees. Separating the two: the **Robinhood app still earns about 55 bps**, while **Bitstamp earns about 0.5 bps**. The average fell because Bitstamp's volume was added in, not because Robinhood cut prices.
 
-**Competitiveness.** Crypto traded on the Robinhood app fell 36% in a year, about the same as at Coinbase (−38%), so Robinhood held its ground in a weak crypto market. It does so as the cheap option: Coinbase earns about **175 bps** per dollar its retail customers trade, more than three times Robinhood's 55 bps. Bitstamp ($22B traded in the quarter) is still small next to Coinbase's professional business ($121B).
+**Competitiveness.** The dollar value of crypto that customers bought and sold on the Robinhood app fell 36%, from $28B in Q2 2025 to $18B in Q2 2026. Coinbase's retail customers traded 38% less over the same period, so Robinhood held its ground in a weak crypto market. It does so as the cheap option: Coinbase earns about **175 bps** per dollar its retail customers trade, more than three times Robinhood's 55 bps. Bitstamp ($22B traded in Q2 2026) is still small next to Coinbase's professional business ($121B).
 
-**Growth.** Negative, and driven by the crypto market: crypto traded −36%, revenue −38%. Of the five businesses, crypto revenue rises and falls the most with the market.
+**Growth.** Negative, and driven by the crypto market: from Q2 2025 to Q2 2026, crypto traded on the app fell 36% and crypto revenue 38%. Of the five businesses, crypto revenue rises and falls the most with the market.
 
 ---
 
 ## 5. Prediction markets
 
-**Profitability.** $156M in Q2 2026, up more than 10× from a year earlier according to Robinhood, and already more than crypto. Estimated operating profit is $70M, but this is the least certain number in the note, because Robinhood only started reporting this revenue separately last quarter.
+**Profitability.** $156M of revenue in Q2 2026 (April–June), more than 10 times its Q2 2025 level according to Robinhood, and already more than crypto. Estimated operating profit is $70M, but this is the least certain number in the note, because Robinhood only started reporting this revenue separately last quarter.
 
 **Earnings per trade.** About **1.1¢ per contract**, on 13.6 billion contracts traded in Q2: tiny bets, at enormous scale.
 
-**Competitiveness.** At about $624M a year, Robinhood's prediction-market revenue is roughly **6× Coinbase's** ("$100M+"). But Robinhood has mostly been reselling contracts created on exchanges like Kalshi, and the exchanges keep most of the money: Kalshi reportedly brings in over $4B a year and Polymarket over $1B (press reports, not official filings). Kalshi was valued at $22B in its last funding round (and is reportedly in talks at $40B); Polymarket at $21B. In June 2026, Robinhood launched **Rothera**, its own regulated prediction-market exchange, run with the trading firm Susquehanna. Running the exchange itself is how Robinhood could keep more of each contract.
+**Competitiveness.** At Q2 2026's pace, Robinhood's prediction-market revenue comes to about $624M a year, roughly **6× Coinbase's** ("$100M+" a year).
+
+It helps to know how these contracts work. A prediction-market contract (for example, "Will the Chiefs win on Sunday?") must be listed on a regulated exchange, which runs the market and settles the bets. Until June 2026, Robinhood mostly did not run such an exchange: it let its customers buy contracts listed on other exchanges, mainly **Kalshi**. Robinhood charges its customers a fee per contract, and the exchange charges its own fee on top. The exchanges are much bigger businesses: Kalshi, which also serves customers of other brokers and its own app, reportedly brings in over $4B a year, and Polymarket over $1B (press reports, not official filings). Kalshi was valued at $22B in its last funding round (and is reportedly in talks at $40B); Polymarket at $21B. In June 2026, Robinhood launched **Rothera**, its own regulated prediction-market exchange, run with the trading firm Susquehanna. Running its own exchange means Robinhood can keep the exchange's fee too, instead of paying it to someone else.
 
 **Growth.** The fastest-growing line by far, and the hardest to forecast (Q3 forecast range: $159–215M).
 
@@ -108,13 +111,13 @@ Looking at Robinhood as one business hides that its products behave very differe
 
 ## 6. Subscriptions & Banking
 
-**Profitability.** $143M of revenue in Q2 2026 (+54%) from Robinhood Gold subscriptions, Trump Account services, the Robinhood Gold credit card and Robinhood Banking. It's the least profitable of the five: an estimated **14%** profit margin ($20M). The main cost is $56M set aside for credit card balances customers may not repay.
+**Profitability.** $143M of revenue in Q2 2026 (up 54% from $93M in Q2 2025) from Robinhood Gold subscriptions, Trump Account services, the Robinhood Gold credit card and Robinhood Banking. It's the least profitable of the five: an estimated **14%** profit margin ($20M). The main cost is $56M set aside for credit card balances customers may not repay.
 
 There's an accounting wrinkle that makes this business look worse than it is. The credit card's losses are counted in this business, but the interest customers pay on their card balances is counted elsewhere, under "net interest". Counting roughly $25M a quarter of that interest here would raise the margin to about 20%.
 
 **Earnings per customer.** About **$119 of revenue per Gold subscriber per year**, compared with $67–106 during 2025. Fees from Trump Accounts helped in Q2 2026.
 
-**Competitiveness.** Gold subscribers grew **37%** to 4.8M, and about 40% of new customers sign up for Gold. Revenue grew 54%, faster than SoFi's comparable business (+29%) and Coinbase's subscription business (−12%). Robinhood Banking holds over $3B of deposits from 240,000 customers, and the credit card business passed $100M of yearly revenue.
+**Competitiveness.** Gold subscribers grew **37%**, from 3.5M at the end of Q2 2025 to 4.8M at the end of Q2 2026, and about 40% of new customers now sign up for Gold. Over the same period, this business's revenue grew 54%, faster than SoFi's comparable business (+29%) and Coinbase's subscription business (−12%). Robinhood Banking holds over $3B of deposits from 240,000 customers, and the credit card business passed $100M of yearly revenue.
 
 **Growth.** Steady: of the five businesses, this is the one that moves least with markets. Its value is also in what it does for the rest of Robinhood: it brings customers in and keeps their money on the platform, where they trade.
 
@@ -134,7 +137,7 @@ Because the shared costs are split by revenue, the four trading businesses all c
 
 ![Profitability](figures/fig3_margins.png)
 
-**The company overall.** Robinhood kept 44% of its revenue as operating profit in Q2 2026, the same as a year earlier, even though revenue grew 32%. That's because costs grew just as fast (+33%). Looking at it another way: from mid-2024 to Q3 2025, each extra $1 of revenue compared with a year earlier added 69–87¢ of operating profit. In the last three quarters, it added only 29–55¢.
+**The company overall.** Robinhood kept 44% of its revenue as operating profit in Q2 2026, the same as in Q2 2025, even though revenue grew 32% between the two. That's because costs grew just as fast (+33%). Looking at it another way: from mid-2024 to Q3 2025, each extra $1 of revenue compared with a year earlier added 69–87¢ of operating profit. In the last three quarters, it added only 29–55¢.
 
 That's a choice rather than a problem: the extra spending pays for Rothera, Trump Accounts (over 7 million sign-ups and nearly $1.5B deposited since launching on July 4, 2026), international expansion (a Singapore license in July 2026, the WonderFi acquisition in Canada) and earlier acquisitions (Bitstamp, TradePMR). Whether that spending pays off is the central question for the stock.
 
@@ -144,7 +147,7 @@ That's a choice rather than a problem: the extra spending pays for Rothera, Trum
 
 Trading revenue is simply activity × earnings per trade, so the most direct risk for Robinhood is customers trading less, as happened in 2022. This section estimates what that would do to revenue and profit.
 
-**How the test works.** Start from Q2 2026 and lower trading activity in all trading businesses by the same percentage. Robinhood keeps earning the same amount per trade. On the cost side, only exchange and clearing fees (about 8% of trading revenue) shrink with trading; salaries, technology, marketing and offices ($672M a quarter) stay the same, as they would in the short run. Subscriptions & Banking and net interest are kept unchanged.
+**How the test works.** Imagine that in a given quarter, customers trade 10%, 20%, 30% or 50% less than they did in Q2 2026: fewer options contracts, fewer stocks, less crypto and fewer prediction-market contracts. Robinhood still earns the same amount on each trade, so its trading revenue falls by the same percentage. On the cost side, only exchange and clearing fees (about 8% of trading revenue) shrink with trading; salaries, technology, marketing and offices ($672M a quarter) stay the same, as they would in the short run. Subscriptions & Banking and net interest are kept unchanged.
 
 | Scenario | Total revenue | Change | Operating profit | Change | Profit margin |
 |---|---|---|---|---|---|
@@ -192,8 +195,8 @@ Trading revenue is simply activity × earnings per trade, so the most direct ris
 
 **What it means.**
 
-- **Investors value Robinhood at more than its businesses are worth at competitors' prices**: $89B, against $57B in the middle case, and even more than the $82B high case. In other words, the stock is expensive compared with what Robinhood's businesses earn today. Investors are paying the extra ~$32B because they expect Robinhood to keep growing much faster than its competitors, and because new projects (Rothera, international expansion, Trump Accounts) could become large businesses. That is neither good nor bad by itself: it is a bet. If growth continues, today's price can be justified; if growth slows to a normal broker's pace, the ~$57B is a more realistic anchor.
-- **One way to see the size of that bet:** if all of the extra $32B were attributed to prediction markets, investors would be valuing that one business at about $43B, or **48 times its yearly revenue**, while comparable exchanges are valued at roughly 6–15 times revenue. $43B is about twice Kalshi's last valuation, for a business that has mostly resold Kalshi's contracts.
+- **Investors value Robinhood at more than its businesses are worth at competitors' prices.** The stock market values Robinhood at $89B. Valuing each business like its competitors gives $57B in the middle case, and only $82B even with the most generous assumptions. In other words, the stock is expensive compared with what Robinhood's businesses earn today. Investors are paying the extra ~$32B because they expect Robinhood to keep growing much faster than its competitors, and because new projects (Rothera, international expansion, Trump Accounts) could become large businesses. That is neither good nor bad by itself: it is a bet. If growth continues, today's price can be justified; if growth slows to a normal broker's pace, the ~$57B is a more realistic anchor.
+- **One way to see the size of that bet:** if all of the extra $32B were attributed to prediction markets, investors would be valuing that one business at about $43B, or **48 times its yearly revenue**, while comparable exchanges are valued at roughly 6–15 times revenue. $43B is about twice what investors valued all of Kalshi at in its last funding round, even though, until June 2026, Robinhood's prediction-market business mostly consisted of offering Kalshi's contracts to its own customers.
 - **Adjusted for growth, the price looks more reasonable.** Robinhood is valued at 12.5 times the revenue analysts expect next year, and that revenue is expected to grow about 39%. Per point of expected growth, that's cheaper than Interactive Brokers or Coinbase, though more expensive than Schwab or SoFi.
 
 ---
