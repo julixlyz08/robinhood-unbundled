@@ -91,6 +91,10 @@ for i, v in enumerate(ANALYZED, 1):
                "operating_margin": pnl.loc[v, "operating_margin"],
                "operating_margin_min": pnl.loc[v, "min"], "operating_margin_max": pnl.loc[v, "max"],
                "operating_profit_m": pnl.loc[v, "operating_profit"],
+               # for the trading-volume stress test in Tableau
+               "volume_sensitive": int(v != "Subscriptions & Banking"),
+               "direct_costs_m": pnl.loc[v, "direct_costs"],
+               "shared_costs_m": pnl.loc[v, "shared_costs"],
                "market_mood_share": rq.loc[v, "market_mood_share"] if v in rq.index else None,
                "steady_growth_share": rq.loc[v, "steady_growth_share"] if v in rq.index else None,
                "btc_elasticity": rq.loc[v, "btc_elasticity"] if v in rq.index else None,

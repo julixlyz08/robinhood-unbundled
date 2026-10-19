@@ -160,38 +160,46 @@ titles(f, "Competitiveness: growth vs rivals, Q2 2026 vs Q2 2025",
 plt.subplots_adjust(left=0.2, right=0.98, top=0.82, bottom=0.12)
 save(f, "fig4_competition.png")
 
-# ---- 5. revenue quality --------------------------------------------------------------
-lines = ["Options", "Equities", "Crypto", "Subscriptions & Banking"]
-f, (ax, ax2) = plt.subplots(1, 2, figsize=(11, 4.2), dpi=200, gridspec_kw={"width_ratios": [1.3, 1]})
+# ---- 5. trading-volume stress test ---------------------------------------------------
+co = pd.read_csv(ROOT / "outputs/volume_stress_company.csv")
+ve = pd.read_csv(ROOT / "outputs/volume_stress_verticals.csv").set_index("vertical")
+f, (ax, ax2) = plt.subplots(1, 2, figsize=(11, 4.4), dpi=200, gridspec_kw={"width_ratios": [1.1, 1]})
 f.patch.set_facecolor(SURF)
 for a in (ax, ax2): a.set_facecolor(SURF)
-y = np.arange(len(lines))[::-1]
-parts = [("steady_growth_share", "Steady growth", "#2a78d6"), ("market_mood_share", "Market mood (VIX, Bitcoin)", "#eb6834"),
-         ("unexplained_share", "Other (launches, one-offs)", "#c3c2b7")]
-left = np.zeros(len(lines))
-for col, lab, c in parts:
-    vals = rq.loc[lines, col].values * 100
-    ax.barh(y, vals, left=left, color=c, height=0.6, edgecolor=SURF, linewidth=2, label=lab)
-    for yi, l, v in zip(y, left, vals):
-        if v >= 9: ax.text(l + v / 2, yi, f"{v:.0f}%", ha="center", va="center", fontsize=9, color="white" if c != "#c3c2b7" else INK)
-    left += vals
-ax.set_yticks(y); ax.set_yticklabels(lines, color=INK); ax.tick_params(axis="y", length=0)
-ax.set_xlim(0, 100); ax.xaxis.set_major_formatter(lambda v, _: f"{v:.0f}%")
-ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.12), ncol=3, frameon=False, fontsize=8.5)
-ax.set_title("What drives each line's ups and downs (2021–2026)", loc="left", fontsize=10.5, color=INK2)
-imp = rq.loc[lines, "btc_minus30_change_m"]
-ax2.barh(y, imp.values, color=[COL[l] for l in lines], height=0.6)
-for yi, v, p in zip(y, imp.values, rq.loc[lines, "btc_minus30_change_pct"].values):
-    ax2.text(v - 1.5, yi, f"-${abs(v):.0f}M ({p:.0f}%)", ha="right", va="center", fontsize=9, color=INK)
-ax2.set_yticks(y); ax2.set_yticklabels([]); ax2.tick_params(axis="y", length=0)
-ax2.set_xlim(-80, 0); ax2.set_xticks([-60, -40, -20, 0]); ax2.xaxis.set_major_formatter(lambda v, _: f"-${abs(v):.0f}M" if v else "0")
+u = co[co.scenario.str.match(r"^(Q2 2026 actual|Volume -\d+%)$")].copy()
+u["vol"] = [0] + [-int(s.split("-")[1].rstrip("%")) for s in u.scenario[1:]]
+ax.plot(u.vol, u.revenue_change_pct, color=MUTED, lw=2.2, marker="o", ms=5, label="Total revenue")
+ax.plot(u.vol, u.op_profit_change_pct, color=INK, lw=2.4, marker="o", ms=5, label="Operating profit")
+for _, rr in u[u.vol.isin([-30, -50])].iterrows():
+    ax.text(rr.vol, rr.revenue_change_pct + 3.5, f"{rr.revenue_change_pct:.0f}%", ha="center", fontsize=8.5, color=INK2)
+    ax.text(rr.vol, rr.op_profit_change_pct - 6.5, f"{rr.op_profit_change_pct:.0f}%", ha="center", fontsize=8.5, color=INK, fontweight="bold")
+rp = co[co.scenario == "2022 replay"].iloc[0]
+ax.scatter([-38], [rp.op_profit_change_pct], marker="D", s=50, color="#e34948", zorder=4)
+ax.text(-39.5, rp.op_profit_change_pct + 1, f"2022 replay: {rp.op_profit_change_pct:.0f}%  ", ha="right", fontsize=8.5, color="#e34948")
+ax.set_xlim(-55, 3); ax.set_ylim(-75, 8)
+ax.xaxis.set_major_formatter(lambda v, _: f"{v:.0f}%"); ax.yaxis.set_major_formatter(lambda v, _: f"{v:.0f}%")
+ax.set_xlabel("Change in trading volume (all trading lines)", fontsize=9)
+ax.yaxis.grid(True, color=GRID); ax.set_axisbelow(True); ax.axhline(0, color=BASE, lw=1)
+ax.legend(loc="lower right", frameon=False, fontsize=9)
+ax.set_title("Profit falls about 2x faster than revenue", loc="left", fontsize=10.5, color=INK2)
+vs = ["Options", "Equities", "Crypto", "Prediction markets", "Subscriptions & Banking"]
+y = np.arange(len(vs))[::-1]
+ax2.barh(y + 0.18, ve.loc[vs, "op_profit_q2_2026"], height=0.34, color=[COL[v] for v in vs], alpha=0.35)
+ax2.barh(y - 0.18, ve.loc[vs, "op_profit_at_minus30"], height=0.34, color=[COL[v] for v in vs])
+for yi, v in zip(y, vs):
+    a, b = ve.loc[v, ["op_profit_q2_2026", "op_profit_at_minus30"]]
+    ax2.text(a + 2, yi + 0.18, f"${a:.0f}M", va="center", fontsize=8.5, color=INK2)
+    ax2.text(b + 2, yi - 0.18, f"${b:.0f}M" + (f" ({b/a-1:+.0%})" if v != "Subscriptions & Banking" else " (unchanged)"),
+             va="center", fontsize=8.5, color=INK, fontweight="bold")
+ax2.set_yticks(y); ax2.set_yticklabels(vs, color=INK, fontsize=9.5); ax2.tick_params(axis="y", length=0)
+ax2.set_xlim(0, 215); ax2.xaxis.set_major_formatter(lambda v, _: f"${v:.0f}M")
 ax2.xaxis.grid(True, color=GRID); ax2.set_axisbelow(True)
-ax2.set_title("Quarterly revenue impact if Bitcoin falls 30%\n(total: about -$135M, -19%)", loc="left", fontsize=10.5, color=INK2)
-f.text(0.01, 0.97, "Revenue quality: Bitcoin, not the VIX, is the swing factor", fontsize=15, fontweight="bold", color=INK, va="top")
-f.text(0.01, 0.015, "Source: Robinhood earnings releases, Yahoo Finance; log regression of quarterly revenue on trend, VIX and Bitcoin (21 quarters).",
-       fontsize=8.5, color=MUTED)
-plt.subplots_adjust(left=0.19, right=0.98, top=0.8, bottom=0.22, wspace=0.12)
-save(f, "fig5_revenue_quality.png")
+ax2.set_title("Est. operating profit per vertical: Q2 2026 (light)\nvs trading volume -30% (dark)", loc="left", fontsize=10.5, color=INK2)
+f.text(0.01, 0.97, "If customers trade less: a 30% volume drop cuts operating profit by 37%", fontsize=15, fontweight="bold", color=INK, va="top")
+f.text(0.01, 0.015, "Base: Q2 2026. Take rates held constant; transaction costs move with revenue (8%), all other costs fixed;\n"
+       "Subscriptions & Banking and net interest held constant. 2022 replay = each line's 2021Q4-to-trough drop.", fontsize=8, color=MUTED)
+plt.subplots_adjust(left=0.07, right=0.98, top=0.8, bottom=0.2, wspace=0.42)
+save(f, "fig5_volume_stress.png")
 
 # ---- 6. valuation waterfall -----------------------------------------------------------
 s = sotp.copy()

@@ -12,13 +12,13 @@ Julie Loyez · [Interactive dashboard](https://public.tableau.com/app/profile/ju
 
 Robinhood reports revenue by product but profit only for the company as a whole. This note rebuilds the company as five businesses and asks the same five questions of each: does it make money, how much per unit, who does it beat, is it growing, and what is it worth?
 
-| Vertical | Q2 2026 revenue | YoY growth | Est. operating margin | Market-mood share of swings | Value (base case) | Role |
-|---|---|---|---|---|---|---|
-| Options | $342M | +29% | 45% | 23% | $19.0B | Engine |
-| Equities | $129M | +95% | 45% | 35% | $6.4B | Engine, more cyclical |
-| Crypto | $100M | −38% | 45% | 41% | $3.4B | Risk |
-| Prediction markets | $156M | >10× (company-reported) | 45% | n/a | $10.4B | Option value |
-| Subscriptions & Banking | $143M | +54% | 14% | 10% | $4.2B | Glue |
+| Vertical | Q2 2026 revenue | YoY growth | Est. operating margin | Market-mood share of swings | Value (base case) |
+|---|---|---|---|---|---|
+| Options | $342M | +29% | 45% | 23% | $19.0B |
+| Equities | $129M | +95% | 45% | 35% | $6.4B |
+| Crypto | $100M | −38% | 45% | 41% | $3.4B |
+| Prediction markets | $156M | >10× (company-reported) | 45% | n/a | $10.4B |
+| Subscriptions & Banking | $143M | +54% | 14% | 10% | $4.2B |
 
 **Six findings:**
 
@@ -26,7 +26,7 @@ Robinhood reports revenue by product but profit only for the company as a whole.
 2. **Each extra trade is almost pure profit.** Direct costs are about 8% of trading revenue. Profitability comes from spreading a fixed platform over more activity.
 3. **But operating leverage is fading.** From mid-2024 to Q3 2025, 69–87¢ of every new revenue dollar reached operating profit. In the last three quarters it was 29–55¢, as costs grew 33% a year to fund Rothera, Trump Accounts, international expansion and acquisitions.
 4. **Prediction markets are already bigger than crypto** ($156M vs $100M in Q2) after barely a year. Robinhood is the largest broker distributor among those that disclose figures, but most of the economics sit with the exchanges, which is why its own exchange, Rothera, matters.
-5. **Bitcoin is the swing factor, not the VIX.** A 30% Bitcoin drop is associated with about $135M less revenue per quarter across options, equities, crypto and Subscriptions & Banking (−19% of their revenue; prediction markets have too little history to test). Crypto is only about a quarter of that hit; options and equities move with it too.
+5. **If customers trade less, profit falls twice as fast as revenue.** Because almost all costs are fixed in the short run, a 30% drop in trading volume cuts revenue by 18% but operating profit by 37% (margin 44% → 33%). A replay of the 2022 downturn, line by line, would cut operating profit by about half. Robinhood would still break even unless volume fell about 80%.
 6. **The parts are worth about $57B; the market pays $89B.** Even at the most generous peer multiples, the sum ($82B) falls short of the stock price. The market is paying about $32B for growth and for bets that barely show in revenue yet. Adjusted for growth, though, the price is reasonable: cheaper per point of growth than Interactive Brokers or Coinbase. **The stock is a bet that ~30%+ growth continues.**
 
 ![Revenue by line](figures/fig1_revenue_mix.png)
@@ -135,15 +135,32 @@ This is a choice, not a failure: the spending funds Rothera, Trump Accounts (ove
 
 ---
 
-## 8. Revenue quality: Bitcoin is the swing factor
+## 8. Stress test: what if customers trade less?
 
-Each line's quarterly revenue since the 2021 IPO was regressed on a time trend, the VIX (market fear) and the Bitcoin price. The result splits each line's ups and downs into steady growth, market mood and other factors.
+Revenue in every trading line is volume × take rate, so the most direct risk to Robinhood is simply less trading. The stress test starts from Q2 2026, lowers trading volume, holds take rates constant, and lets costs respond the way they would in the short run: transaction costs (about 8% of transaction revenue) fall with volume, while technology, operations, marketing and G&A ($672M a quarter) stay put. Subscriptions & Banking and net interest are held constant.
 
-- The **VIX is not statistically significant for any of the four verticals tested**; **Bitcoin is significant for every one**, including options and equities. Bitcoin seems to work as a gauge of retail risk appetite.
-- If Bitcoin falls 30%, options, equities, crypto and Subscriptions & Banking lose about **$135M of quarterly revenue (−19% of their combined revenue)**: options −$49M, crypto −$37M, equities −$30M, Subscriptions & Banking −$19M.
-- **Subscriptions & Banking is the steadiest line and crypto the least.** Total company revenue is steadier than any trading line alone, because net interest moves differently.
+| Scenario | Total revenue | Change | Operating profit | Change | Operating margin |
+|---|---|---|---|---|---|
+| Q2 2026 actual | $1,308M | | $574M | | 44% |
+| Trading volume −10% | $1,230M | −6% | $503M | −12% | 41% |
+| Trading volume −20% | $1,153M | −12% | $431M | −25% | 37% |
+| Trading volume −30% | $1,075M | −18% | $360M | −37% | 33% |
+| Trading volume −50% | $920M | −30% | $217M | −62% | 24% |
+| 2022 replay* | $1,011M | −23% | $301M | −48% | 30% |
 
-![Revenue quality](figures/fig5_revenue_quality.png)
+*Each line falls by its own peak-to-trough revenue drop from Q4 2021 to the 2022–2023 low: options −31%, equities −60%, crypto −52%. Prediction markets and other transaction, which did not exist then, are assumed to fall like options.
+
+**What it means.**
+
+- **Operating profit falls about 2.1× as fast as revenue.** This is the same operating leverage that made the last two years so profitable, running in reverse.
+- **Each trading vertical's estimated operating margin falls from 45% to about 25%** at −30% volume; options profit drops from $154M to $59M a quarter. Subscriptions & Banking is the only vertical untouched, which is the strongest case for its role as the platform's stabilizer.
+- **Robinhood is still far from losses.** Operating profit only reaches zero if trading volume falls about 80% with no cost cuts. In the 2022 downturn, by comparison, transaction revenue fell about 30% from its Q4 2021 level.
+- **Two things would soften the blow.** Equities' take rate has tended to rise when volume falls (elasticity −0.15), but that only recovers about 1 percentage point of profit. Management could also cut marketing or slow hiring, which this short-run test assumes it doesn't.
+- **Two things would make it worse.** In 2022, "other revenues" also fell as Gold subscribers declined, and the margin book (part of net interest) shrinks when customers trade less; both are held constant here.
+
+![Volume stress test](figures/fig5_volume_stress.png)
+
+**Revenue quality, in context.** A regression of each line's quarterly revenue since 2021 on a time trend, the VIX and the Bitcoin price shows how much of each line's ups and downs is steady growth versus market mood: options 64% steady, equities 39%, crypto 27%, Subscriptions & Banking 60% (the "market-mood share" in the summary table). Bitcoin, not the VIX, is the market indicator that moves with every line, which suggests trading volume at Robinhood tracks retail risk appetite.
 
 ---
 
@@ -206,6 +223,7 @@ Revenue for each vertical = monthly activity (July and August from Robinhood's m
 
 - **Cost allocation is an estimate.** Robinhood does not disclose costs by product. Shared costs are allocated by revenue, so the trading lines' operating margins are similar by construction; scenarios test the main alternatives.
 - **Short history.** Volumes were first disclosed in 2024, prediction-market revenue in Q2 2026, and the regressions use 21 quarters.
+- **The stress test is short-run.** It holds take rates, Gold revenue, net interest and non-transaction costs fixed; the 2022 replay uses revenue drops as a stand-in for volume drops, because volumes were not disclosed then.
 - **Subscriptions & Banking is understated**, because part of the Gold Card's and Banking's income is booked in net interest.
 - **Peer multiples move.** The valuation is a snapshot at the October 16, 2026 close; the subscription multiple and the Kalshi revenue figure are the weakest inputs.
 - **Regulation.** Prediction markets and crypto both face open regulatory questions in the US.
@@ -217,6 +235,7 @@ Revenue for each vertical = monthly activity (July and August from Robinhood's m
 - **Data.** 21 quarters (Q2 2021–Q2 2026) from Robinhood's earnings releases (SEC 8-K Exhibit 99.1 and investors.robinhood.com), every quarter reconciled to reported totals; monthly operating data releases for April–September 2026; competitor earnings releases and filings; VIX and Bitcoin prices from Yahoo Finance; valuation inputs at the October 16, 2026 close.
 - **Take rates.** Revenue ÷ volume per vertical. Crypto's app and Bitstamp rates are solved jointly from Q1 and Q2 2026.
 - **Profit per vertical.** Brokerage and transaction costs are allocated to transaction lines by revenue (scenario: double weight on crypto and prediction markets); credit-loss provisions to Subscriptions & Banking; technology, operations, marketing and G&A to all lines by revenue (scenario: 1.5× marketing weight on Subscriptions & Banking). A scenario also moves $25M a quarter of card income from net interest. The allocated pieces always sum to reported operating income.
+- **Volume stress test.** Q2 2026 base; trading-line revenue scales with volume at constant take rates; brokerage and transaction costs scale with transaction revenue; all other costs, Subscriptions & Banking and net interest are held constant.
 - **Revenue quality.** Log-log regressions of quarterly revenue on a time trend, average VIX and average Bitcoin price; "steady growth" is the R² of the trend-only model, "market mood" the R² added by VIX and Bitcoin.
 - **Valuation.** EV / FY2027 revenue multiples of listed peers; FY2027 revenue from consensus, split by forecast mix; net cash of $3.16B (cash minus the 2029 convertible notes).
 

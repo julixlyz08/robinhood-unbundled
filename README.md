@@ -131,18 +131,35 @@ The "so what": in trading, Robinhood wins on **price and product breadth, not on
 ### Step 6: Revenue quality (2021Q2–2026Q2)
 For each vertical, quarterly revenue was regressed on a time trend, the VIX (market fear) and the Bitcoin price, all in logs. The fit splits each line's ups and downs into steady growth, market mood, and other factors:
 
-| Line | Steady growth | Market mood | Other (launches, one-offs) | If Bitcoin falls 30% |
-|---|---|---|---|---|
-| Options | 64% | 23% | 13% | −14% (−$49M/qtr) |
-| Equities | 39% | 35% | 26% | −23% (−$30M/qtr) |
-| Crypto | 27% | 41% | 32% | −37% (−$37M/qtr) |
-| Subscriptions & Banking | 60% | 10% | 30% | −13% (−$19M/qtr) |
+| Line | Steady growth | Market mood | Other (launches, one-offs) |
+|---|---|---|---|
+| Options | 64% | 23% | 13% |
+| Equities | 39% | 35% | 26% |
+| Crypto | 27% | 41% | 32% |
+| Subscriptions & Banking | 60% | 10% | 30% |
 
 What it means:
-- **The Bitcoin price is the swing factor, not the VIX.** VIX is never statistically significant. Bitcoin is significant for every line, including options and equities, which suggests it works as a gauge of retail risk appetite.
-- **A 30% Bitcoin drop takes about $135M a quarter (19%) off the four verticals tested** (options, equities, crypto, Subscriptions & Banking), not just off crypto. Crypto is only about a quarter of that hit.
+- **Bitcoin, not the VIX, is the market indicator that moves with every line**, including options and equities. It works as a gauge of retail risk appetite.
 - **Subscriptions & Banking is the steadiest revenue**, and options are steadier than they look. Crypto is the least predictable.
-- Caveats: 21 quarters is a short history, the trend is fitted before market mood (so the split depends on that order), and net interest is driven by interest rates, which aren't in the model. Its results are shown for reference only.
+- Caveats: 21 quarters is a short history, the trend is fitted before market mood (so the split depends on that order), and net interest is driven by interest rates, which aren't in the model.
+
+### Step 6b: Trading-volume stress test (`src/volume_stress.py`)
+What happens if customers trade less? Starting from Q2 2026, trading volume is lowered across all trading lines at constant take rates. Transaction costs (8% of transaction revenue) fall with volume; all other costs ($672M a quarter), Subscriptions & Banking and net interest stay fixed.
+
+| Scenario | Revenue | Operating profit | Operating margin |
+|---|---|---|---|
+| Q2 2026 actual | $1,308M | $574M | 44% |
+| Volume −10% | −6% | −12% | 41% |
+| Volume −20% | −12% | −25% | 37% |
+| Volume −30% | −18% | −37% | 33% |
+| Volume −50% | −30% | −62% | 24% |
+| 2022 replay (options −31%, equities −60%, crypto −52%) | −23% | −48% | 30% |
+
+What it means:
+- **Profit falls about 2.1× as fast as revenue**: operating leverage in reverse.
+- At −30% volume, each trading vertical's operating margin falls from about 45% to about 25%; Subscriptions & Banking is untouched.
+- **Break-even is far away**: operating profit reaches zero only if volume falls about 80% with no cost cuts.
+- The test is generous on two points: Gold revenue fell in 2022, and the margin book shrinks when trading slows; both are held constant.
 
 ### Step 7: Sum-of-the-parts valuation (prices at Oct 16, 2026 close)
 Each vertical is valued at its closest listed peers' enterprise value ÷ next-year revenue. FY2027 revenue uses the analyst consensus ($6.85B), split by our forecast mix.
