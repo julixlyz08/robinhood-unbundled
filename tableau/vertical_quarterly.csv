@@ -126,6 +126,13 @@ quarter,quarter_end,vertical,analyzed,is_forecast,revenue_m,revenue_low_m,revenu
 2026Q2,2026-06-30,Subscriptions & Banking,1,0,143.0,,,4.8,M Gold subscribers,119.16666666666669,$ per Gold sub / yr,
 2026Q2,2026-06-30,Other transaction,0,0,49.0,,,,,,,
 2026Q2,2026-06-30,Net interest,0,0,389.0,,,,,,,
+2026Q3,2026-09-30,Options,1,0,399.0,,,905.0,M contracts,0.4408839779005525,$ per contract,
+2026Q3,2026-09-30,Equities,1,0,121.0,,,992.0,$B notional,1.219758064516129,bps,
+2026Q3,2026-09-30,Crypto,1,0,120.0,,,21.0,$B notional (app),57.142857142857146,bps (app),
+2026Q3,2026-09-30,Prediction markets,1,0,173.0,,,16.4,B contracts,1.054878048780488,cents per contract,
+2026Q3,2026-09-30,Subscriptions & Banking,1,0,142.0,,,5.2,M Gold subscribers,109.23076923076924,$ per Gold sub / yr,
+2026Q3,2026-09-30,Other transaction,0,0,54.0,,,,,,,
+2026Q3,2026-09-30,Net interest,0,0,415.0,,,,,,,
 2026Q3,2026-09-30,Options,1,1,400.0,385.0,415.0,905.8,M contracts,0.442,$ per contract,forecast made 2026-10-18
 2026Q3,2026-09-30,Equities,1,1,135.0,125.0,145.0,998.0,$B notional,1.349,bps,forecast made 2026-10-18
 2026Q3,2026-09-30,Crypto,1,1,114.0,103.0,125.0,20.4,$B notional (app),54.912,bps (app),forecast made 2026-10-18

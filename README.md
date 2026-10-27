@@ -182,6 +182,22 @@ The "so what":
 - **Adjusted for growth, it looks reasonable.** Robinhood trades at 12.5× forward revenue with about 39% expected growth, roughly 0.32× per growth point. That's cheaper than IBKR (0.60), Coinbase (0.40) and the exchanges, and dearer than Schwab (0.23) and SoFi (0.07). **The stock is a bet that ~30%+ growth continues.**
 - Full tables are in `outputs/sotp.csv` and `outputs/growth_adjusted_multiples.csv`.
 
+### Step 10: Q3 2026 forecast scored (results reported Oct 27, 2026; `src/score_q3.py`)
+
+| Line | Forecast | Reported | Error | In range? |
+|---|---|---|---|---|
+| Options | $400M | $399M | +0.3% | Yes |
+| Equities | $135M | $121M | +11.6% | Below |
+| Crypto | $114M | $120M | −5.0% | Yes |
+| Prediction markets | $187M | $173M | +8.1% | Yes |
+| Subscriptions & Banking | $158M | $142M | +11.3% | Just below |
+| **Total revenue** | **$1,432M** | **$1,424M** | **+0.6%** | **Yes** |
+
+- Trading activity was forecast almost exactly (options contracts 906M vs 905M; stock value traded $998B vs $992B; prediction-market contracts 16.3B vs 16.4B).
+- The misses came from earnings per trade: equities 1.22 bps vs 1.35 assumed; prediction markets 1.05¢ vs 1.15¢ per contract.
+- The total was close partly because errors offset: net interest came in at $415M vs $389M assumed.
+- Full table: `outputs/q3_2026_scorecard.csv`.
+
 ## Data sources
 
 - Robinhood quarterly earnings releases (investors.robinhood.com, SEC 8-K Exhibit 99.1)

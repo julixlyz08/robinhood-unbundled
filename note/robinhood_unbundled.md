@@ -201,7 +201,7 @@ Trading revenue is simply activity × earnings per trade, so the most direct ris
 
 ---
 
-## 10. Q3 2026 revenue forecast (made before the October 27 report)
+## 10. Q3 2026 revenue forecast, and how it did
 
 **How it works.** Robinhood publishes how much its customers traded each month. For each business, the forecast multiplies the activity in July, August and September by what Robinhood earned per trade last quarter. For September, only the first 24 days had been published, so the full month was estimated from them. To check the method, it was tested on the past nine quarters: on average it was off by 3.8% for options and 7.5% for stocks. Those past errors set the low and high ends of each range.
 
@@ -217,7 +217,27 @@ Trading revenue is simply activity × earnings per trade, so the most direct ris
 
 ![Q3 forecast](figures/fig7_q3_forecast.png)
 
-*Comparison with reported results: to be added after October 27, 2026.*
+### How the forecast did (results reported October 27, 2026)
+
+| Business | Forecast | Range | Reported | Forecast error | Within range? |
+|---|---|---|---|---|---|
+| Options | $400M | $385–415M | $399M | +0.3% | Yes |
+| Equities | $135M | $125–145M | $121M | +11.6% | No, below |
+| Crypto | $114M | $103–125M | $120M | −5.0% | Yes |
+| Prediction markets | $187M | $159–215M | $173M | +8.1% | Yes |
+| Subscriptions & Banking | $158M | $143–171M | $142M | +11.3% | No, just below |
+| Other transaction + net interest | $438M | $417–459M | $469M | −6.6% | No, above |
+| **Total revenue** | **$1,432M** | **$1,332–1,530M** | **$1,424M** | **+0.6%** | **Yes** |
+
+![Q3 forecast vs reported](figures/fig8_q3_scorecard.png)
+
+**What the result teaches.**
+
+- **The total was off by only 0.6%, but partly by luck.** Three lines came in below the forecast and net interest came in above it ($415M vs $389M), so the errors cancelled out.
+- **Trading activity was predicted almost exactly.** Forecast vs reported: options contracts 906M vs 905M, stock value traded $998B vs $992B, prediction-market contracts 16.3B vs 16.4B, crypto on the app $20B vs $21B. Robinhood's monthly data, with September estimated from its first 24 days, gives a near-perfect read of how much customers will trade.
+- **The misses came from what Robinhood earned per trade.** On stocks it earned 1.22 bps per dollar traded instead of the assumed 1.35 bps (−10%). On prediction markets it earned 1.05¢ per contract instead of 1.15¢ (−9%). Options and crypto pricing held steady. So the hard part of forecasting Robinhood isn't activity; it's whether the price per trade holds.
+- **Subscriptions & Banking was flat** ($142M vs $143M in Q2), even though Gold subscribers grew from 4.8M to 5.2M. The forecast assumed revenue would grow with subscribers; it didn't, so revenue per subscriber fell.
+- **The method held up:** the total and three of the five businesses landed inside their ranges, and the two that missed fell just outside them (by $4M for stocks and $1M for Subscriptions & Banking).
 
 ---
 

@@ -16,6 +16,9 @@ FIG.mkdir(parents=True, exist_ok=True)
 
 q = pd.read_csv(ROOT / "data/processed/quarters.csv")
 t = pd.read_csv(ROOT / "data/processed/take_rates.csv")
+# The note analyzes data through Q2 2026; Q3 2026 is only used to score the forecast (chart 8).
+q = q[q.quarter <= "2026Q2"]
+t = t[t.quarter <= "2026Q2"]
 pnl = pd.read_csv(ROOT / "data/processed/vertical_pnl_summary_2026q2.csv").set_index("line")
 inc = pd.read_csv(ROOT / "data/processed/incremental_margin.csv")
 rq = pd.read_csv(ROOT / "outputs/revenue_quality.csv").set_index("line")
@@ -234,3 +237,28 @@ plt.subplots_adjust(left=0.07, right=0.98, top=0.83, bottom=0.17)
 save(f, "fig6_sotp.png")
 
 print("charts written:", sorted(p.name for p in FIG.glob("*.png")))
+
+# ---- 8. Q3 2026 forecast vs actual ------------------------------------------------------
+sc_path = ROOT / "outputs/q3_2026_scorecard.csv"
+if sc_path.exists():
+    sc = pd.read_csv(sc_path)
+    lines8 = ["Options", "Equities", "Crypto", "Prediction markets", "Subscriptions & Banking"]
+    sc = sc.set_index("line").loc[lines8]
+    f, ax = fig(10, 4.8)
+    y = np.arange(len(lines8))[::-1]
+    for yi, v in zip(y, lines8):
+        r = sc.loc[v]
+        ax.plot([r.low, r.high], [yi, yi], color=COL[v], lw=10, alpha=0.3, solid_capstyle="butt")
+        ax.plot([r.forecast, r.forecast], [yi - 0.22, yi + 0.22], color=INK2, lw=2)
+        ax.scatter(r.actual, yi, s=110, color=COL[v], edgecolor=INK, linewidth=1.2, zorder=3)
+        verdict = "in range" if r.within_range == "yes" else f"{r.within_range} range"
+        ax.text(max(r.high, r.actual) + 8, yi, f"reported \\${r.actual:.0f}M vs forecast \\${r.forecast:.0f}M  ({verdict})",
+                va="center", fontsize=9, color=INK)
+    ax.set_yticks(y); ax.set_yticklabels(lines8, color=INK); ax.tick_params(axis="y", length=0)
+    ax.set_xlim(90, 640); ax.xaxis.set_major_formatter(lambda v, _: f"${v:.0f}M")
+    ax.xaxis.grid(True, color=GRID); ax.set_axisbelow(True)
+    titles(f, "Q3 2026: forecast vs reported revenue",
+           "Shaded bar = forecast range, grey tick = forecast, dot = reported. Total: \\$1,432M forecast vs \\$1,424M reported (-0.6%).",
+           "Forecast made Oct 18, 2026; results reported Oct 27, 2026. Source: Robinhood Q3 2026 earnings release.")
+    plt.subplots_adjust(left=0.2, right=0.98, top=0.82, bottom=0.12)
+    save(f, "fig8_q3_scorecard.png")
