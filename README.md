@@ -200,28 +200,29 @@ The "so what":
 
 ### Step 10b: Why the forecast missed, and how it compares with Zacks (`src/forecast_review.py`)
 
-| Line | My forecast | Zacks consensus* | Reported | Closer |
+| Line | My forecast | Zacks consensus (Oct 22)* | Reported | Closer |
 |---|---|---|---|---|
-| Options | $400M | $400M | $399M | tie |
-| Equities | $135M | $133M | $121M | Zacks |
-| Crypto | $114M | $119M | $120M | Zacks |
-| Prediction markets | $187M | $185M | $173M | Zacks |
-| Subscriptions & Banking | $158M | $134M | $142M | Zacks |
-| Other transaction | $49M | $51M | $54M | Zacks |
-| Net interest | $389M | $431M | $415M | Zacks |
-| **Total revenue** | **$1,432M** | **$1,440M** | **$1,424M** | **Me** |
+| Options | $400M | $364M | $399M | Me |
+| Equities | $135M | $120M | $121M | Zacks |
+| Crypto | $114M | $136M | $120M | Me |
+| Prediction markets | $187M | $182M | $173M | Zacks |
+| Subscriptions & Banking | $158M | $129M | $142M | Zacks |
+| Other transaction | $49M | $46M | $54M | Me |
+| Net interest | $389M | $441M | $415M | Tie (both off by $26M, opposite directions) |
+| **Total revenue** | **$1,432M** | **$1,418M** | **$1,424M** | **Zacks** |
 
-*Zacks Q3 preview published the day before the report; prediction markets implied from its transaction-revenue estimate. An earlier Zacks piece (Oct 22) had total revenue at $1.42B.
+*Zacks Equity Research, published Oct 22, 2026 (headline total "$1.42 billion"; $1,418M is the sum of its three revenue categories). Its prediction-markets figure isn't printed; it's implied from its transaction-revenue estimate.
 
-**My total was closer, but Zacks was closer on every individual line.** My errors happened to cancel: lines that came in too high (equities, prediction markets, Subscriptions & Banking) were offset by net interest coming in too low. Adding up the line errors without their signs: $82M for me, $52M for Zacks.
+**Zacks was slightly closer on the total (−0.5% vs my +0.6%), but my forecast was more accurate line by line.** Adding up the line errors without their signs: $82M for me, $108M for Zacks. Zacks' total looked good partly because its own errors cancelled: it was $35M too low on options and $26M too high on net interest. The biggest difference between us is options, where reading the monthly activity data got me within $1M while the consensus was $35M low.
 
 **Where I failed, and why:**
-1. **Net interest (−$26M, my biggest miss).** I held it flat at the Q2 level. But Robinhood publishes its margin book (money lent to customers) every month, and it had grown about 7% from Q2 to July–August. Growing net interest with the margin book would have given **$417M vs $415M reported**. The data was there; I didn't use it.
+1. **Net interest (−$26M, my biggest miss).** I held it flat at the Q2 level. But Robinhood publishes its margin book (money lent to customers) every month, and it had grown about 7% by July–August. Growing net interest with the margin book would have given **$417M vs $415M reported**. The data was there; I didn't use it. (Zacks was off by the same amount in the other direction.)
 2. **Subscriptions & Banking (+$16M).** I grew it with Gold subscribers. But the Q2 jump (from $85M to $143M) came mostly from Trump Account service revenue, not from Gold. Revenue stayed flat even as Gold went from 4.8M to 5.2M. Holding it flat would have given **$143M vs $142M reported**. I mistook a one-off jump for a trend.
-3. **Equities and prediction markets (+$14M each).** I predicted the activity almost exactly (stocks traded $998B vs $992B; contracts 16.3B vs 16.4B), but Robinhood earned less per trade than in Q2: 1.22 bps on stocks (its lowest ever) instead of 1.35, and 1.05¢ per prediction contract instead of 1.15¢. Zacks missed these two by almost as much, so the drop in per-trade earnings surprised the consensus too. The release I found doesn't explain it; possible reasons (a shift toward larger, cheaper-to-serve traders, or the new Rothera exchange changing how prediction-market revenue is booked) are hypotheses, not findings.
-4. **Judging only the total.** The total looked excellent (−0.6%), which hid the line misses. Fixing items 1 and 2 would have made every one of those lines more accurate, but the total would have moved further away (+1.4%), because nothing would have offset the equities and prediction-market misses anymore.
+3. **Equities (+$14M).** I predicted stock trading almost exactly ($998B traded vs $992B), but assumed Robinhood would keep earning Q2's 1.35 bps per dollar traded. It earned 1.22 bps, its lowest ever. Zacks expected about $120M, so the consensus anticipated lower equities revenue and I didn't. Q2's rate was at the high end of its recent range; using it as-is was the mistake.
+4. **Prediction markets (+$14M).** Activity was again right (16.3B contracts vs 16.4B), but Robinhood earned 1.05¢ per contract instead of 1.15¢. Zacks was also too high (+$9M), so lower per-contract earnings surprised others too. With only one quarter of history, this line was always the least certain; possible reasons (such as Rothera changing how revenue is booked) are hypotheses, not findings.
+5. **Judging only the total.** The total looked excellent (−0.6%), which hid the line misses. Fixing items 1 and 2 would have made those lines almost exact, but the total would have moved further away (+1.4%), because nothing would have offset the equities and prediction-market misses anymore.
 
-**What to change next quarter:** model net interest from the monthly margin book and cash balances; split Subscriptions & Banking into Gold (subscribers × price) and Trump Account fees; widen the earnings-per-trade ranges for equities and prediction markets; and score the forecast line by line, not just the total.
+**What to change next quarter:** model net interest from the monthly margin book; split Subscriptions & Banking into Gold (subscribers × price) and Trump Account fees; use a range of recent per-trade earnings rather than only the last quarter's for equities and prediction markets; and score the forecast line by line, not just the total.
 
 ## Data sources
 

@@ -278,12 +278,14 @@ if vz_path.exists():
     ax.axvline(0, color=INK2, lw=1)
     ax.axhline(0.5, color=BASE, lw=1, ls="--")
     ax.set_yticks(y); ax.set_yticklabels(vz.short, color=INK, fontsize=9.5); ax.tick_params(axis="y", length=0)
-    ax.set_xlim(-35, 25); ax.xaxis.set_major_formatter(lambda v, _: f"{v:+.0f}" if v else "0")
+    ax.set_xlim(-45, 35); ax.xaxis.set_major_formatter(lambda v, _: f"{v:+.0f}" if v else "0")
     ax.set_xlabel("Forecast minus reported revenue, $M (right = too high, left = too low)", fontsize=9, color=INK2)
     ax.xaxis.grid(True, color=GRID); ax.set_axisbelow(True)
     ax.legend(loc="lower left", frameon=False, fontsize=9)
-    titles(f, "My total was closer than Zacks, but Zacks was closer on every line",
-           "Q3 2026 revenue forecast errors by line. My errors offset each other; adding them up without signs: \\$82M for me, \\$52M for Zacks.",
-           "Zacks consensus from its Q3 preview (day before the report); prediction markets implied from its transaction-revenue estimate. Reported: Robinhood, Oct 27, 2026.")
+    ln = vz[vz.line != "TOTAL NET REVENUE"]
+    me_abs, z_abs = ln.my_error_m.abs().sum(), ln.zacks_error_m.abs().sum()
+    titles(f, "Q3 2026 forecast errors by line: my forecast vs the Zacks consensus",
+           f"Adding up line errors without their signs: \\${me_abs:.0f}M for me, \\${z_abs:.0f}M for Zacks. Bars right = forecast too high, left = too low.",
+           "Zacks consensus published Oct 22, 2026; prediction markets implied from its transaction-revenue estimate. Reported: Robinhood, Oct 27, 2026.")
     plt.subplots_adjust(left=0.22, right=0.97, top=0.83, bottom=0.17)
     save(f, "fig9_vs_zacks.png")

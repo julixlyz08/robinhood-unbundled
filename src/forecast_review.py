@@ -8,9 +8,9 @@ Step 10b: why the Q3 2026 forecast missed, and how it compares with the Zacks co
    - Subscriptions & Banking: hold it flat (Q2's jump was Trump Account service revenue, not
      Gold growth) instead of growing it with Gold subscribers
 
-Zacks consensus: Zacks Equity Research preview published the day before the report
-("Zacks Consensus Estimate for sales of $1.44 billion"). Its event-contracts estimate is not
-printed; it is implied as transaction-based revenue minus the four named lines.
+Zacks consensus: Zacks Equity Research, published Oct 22, 2026 (total "$1.42 billion").
+Its event-contracts estimate is not printed; it is implied as transaction-based revenue
+minus the four named lines.
 
 Run:  python src/forecast_review.py
 """
@@ -23,10 +23,14 @@ sc = pd.read_csv(ROOT / "outputs/q3_2026_scorecard.csv").set_index("line")
 q = pd.read_csv(ROOT / "data/processed/quarters.csv").set_index("quarter")
 m = pd.read_csv(ROOT / "data/raw/monthly_metrics.csv").set_index("month")
 
-zacks_trans = 887.7
-zacks = {"Options": 399.8, "Equities": 133.0, "Crypto": 118.7, "Other transaction (not analyzed)": 51.4,
-         "Net interest (not analyzed)": 430.7, "Subscriptions & Banking": 134.4, "TOTAL NET REVENUE": 1440.0}
-zacks["Prediction markets"] = zacks_trans - 399.8 - 133.0 - 118.7 - 51.4   # implied
+# Zacks consensus as published Oct 22, 2026 ("What Analyst Projections for Key Metrics Reveal
+# About Robinhood Markets (HOOD) Q3 Earnings"). Headline total "$1.42 billion"; the total used
+# here is the sum of its three revenue categories so every line is consistent.
+zacks_trans = 847.75
+zacks = {"Options": 364.11, "Equities": 120.34, "Crypto": 135.64, "Other transaction (not analyzed)": 45.79,
+         "Net interest (not analyzed)": 441.02, "Subscriptions & Banking": 128.79}
+zacks["Prediction markets"] = zacks_trans - 364.11 - 120.34 - 135.64 - 45.79   # implied, not printed
+zacks["TOTAL NET REVENUE"] = zacks_trans + 441.02 + 128.79
 
 order = ["Options", "Equities", "Crypto", "Prediction markets", "Subscriptions & Banking",
          "Other transaction (not analyzed)", "Net interest (not analyzed)", "TOTAL NET REVENUE"]
@@ -38,7 +42,7 @@ for line in order:
     rows.append({"line": line, "my_forecast": mine, "zacks_consensus": round(z, 1), "reported": act,
                  "my_error_m": mine - act, "zacks_error_m": round(z - act, 1),
                  "my_error_pct": (mine / act - 1) * 100, "zacks_error_pct": (z / act - 1) * 100,
-                 "closer": "me" if abs(mine - act) < abs(z - act) else ("tie" if abs(mine - act) == abs(z - act) else "Zacks")})
+                 "closer": "tie" if abs(abs(mine - act) - abs(z - act)) < 0.5 else ("me" if abs(mine - act) < abs(z - act) else "Zacks")})
 r = pd.DataFrame(rows)
 r.to_csv(ROOT / "outputs/q3_2026_vs_zacks.csv", index=False)
 
