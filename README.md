@@ -198,6 +198,31 @@ The "so what":
 - The total was close partly because errors offset: net interest came in at $415M vs $389M assumed.
 - Full table: `outputs/q3_2026_scorecard.csv`.
 
+### Step 10b: Why the forecast missed, and how it compares with Zacks (`src/forecast_review.py`)
+
+| Line | My forecast | Zacks consensus* | Reported | Closer |
+|---|---|---|---|---|
+| Options | $400M | $400M | $399M | tie |
+| Equities | $135M | $133M | $121M | Zacks |
+| Crypto | $114M | $119M | $120M | Zacks |
+| Prediction markets | $187M | $185M | $173M | Zacks |
+| Subscriptions & Banking | $158M | $134M | $142M | Zacks |
+| Other transaction | $49M | $51M | $54M | Zacks |
+| Net interest | $389M | $431M | $415M | Zacks |
+| **Total revenue** | **$1,432M** | **$1,440M** | **$1,424M** | **Me** |
+
+*Zacks Q3 preview published the day before the report; prediction markets implied from its transaction-revenue estimate. An earlier Zacks piece (Oct 22) had total revenue at $1.42B.
+
+**My total was closer, but Zacks was closer on every individual line.** My errors happened to cancel: lines that came in too high (equities, prediction markets, Subscriptions & Banking) were offset by net interest coming in too low. Adding up the line errors without their signs: $82M for me, $52M for Zacks.
+
+**Where I failed, and why:**
+1. **Net interest (−$26M, my biggest miss).** I held it flat at the Q2 level. But Robinhood publishes its margin book (money lent to customers) every month, and it had grown about 7% from Q2 to July–August. Growing net interest with the margin book would have given **$417M vs $415M reported**. The data was there; I didn't use it.
+2. **Subscriptions & Banking (+$16M).** I grew it with Gold subscribers. But the Q2 jump (from $85M to $143M) came mostly from Trump Account service revenue, not from Gold. Revenue stayed flat even as Gold went from 4.8M to 5.2M. Holding it flat would have given **$143M vs $142M reported**. I mistook a one-off jump for a trend.
+3. **Equities and prediction markets (+$14M each).** I predicted the activity almost exactly (stocks traded $998B vs $992B; contracts 16.3B vs 16.4B), but Robinhood earned less per trade than in Q2: 1.22 bps on stocks (its lowest ever) instead of 1.35, and 1.05¢ per prediction contract instead of 1.15¢. Zacks missed these two by almost as much, so the drop in per-trade earnings surprised the consensus too. The release I found doesn't explain it; possible reasons (a shift toward larger, cheaper-to-serve traders, or the new Rothera exchange changing how prediction-market revenue is booked) are hypotheses, not findings.
+4. **Judging only the total.** The total looked excellent (−0.6%), which hid the line misses. Fixing items 1 and 2 would have made every one of those lines more accurate, but the total would have moved further away (+1.4%), because nothing would have offset the equities and prediction-market misses anymore.
+
+**What to change next quarter:** model net interest from the monthly margin book and cash balances; split Subscriptions & Banking into Gold (subscribers × price) and Trump Account fees; widen the earnings-per-trade ranges for equities and prediction markets; and score the forecast line by line, not just the total.
+
 ## Data sources
 
 - Robinhood quarterly earnings releases (investors.robinhood.com, SEC 8-K Exhibit 99.1)

@@ -262,3 +262,28 @@ if sc_path.exists():
            "Forecast made Oct 18, 2026; results reported Oct 27, 2026. Source: Robinhood Q3 2026 earnings release.")
     plt.subplots_adjust(left=0.2, right=0.98, top=0.82, bottom=0.12)
     save(f, "fig8_q3_scorecard.png")
+
+# ---- 9. my forecast vs Zacks consensus: errors by line ------------------------------------
+vz_path = ROOT / "outputs/q3_2026_vs_zacks.csv"
+if vz_path.exists():
+    vz = pd.read_csv(vz_path)
+    vz["short"] = vz.line.str.replace(" (not analyzed)", "", regex=False).str.replace("TOTAL NET REVENUE", "Total revenue")
+    f, ax = fig(10, 5.2)
+    y = np.arange(len(vz))[::-1]
+    ax.barh(y + 0.19, vz.my_error_m, height=0.36, color="#2a78d6", label="My forecast")
+    ax.barh(y - 0.19, vz.zacks_error_m, height=0.36, color="#c3c2b7", label="Zacks consensus")
+    for yi, a_, b_ in zip(y, vz.my_error_m, vz.zacks_error_m):
+        ax.text(a_ + (1 if a_ >= 0 else -1), yi + 0.19, f"{a_:+.0f}", va="center", ha="left" if a_ >= 0 else "right", fontsize=8.5, color=INK)
+        ax.text(b_ + (1 if b_ >= 0 else -1), yi - 0.19, f"{b_:+.0f}", va="center", ha="left" if b_ >= 0 else "right", fontsize=8.5, color=INK2)
+    ax.axvline(0, color=INK2, lw=1)
+    ax.axhline(0.5, color=BASE, lw=1, ls="--")
+    ax.set_yticks(y); ax.set_yticklabels(vz.short, color=INK, fontsize=9.5); ax.tick_params(axis="y", length=0)
+    ax.set_xlim(-35, 25); ax.xaxis.set_major_formatter(lambda v, _: f"{v:+.0f}" if v else "0")
+    ax.set_xlabel("Forecast minus reported revenue, $M (right = too high, left = too low)", fontsize=9, color=INK2)
+    ax.xaxis.grid(True, color=GRID); ax.set_axisbelow(True)
+    ax.legend(loc="lower left", frameon=False, fontsize=9)
+    titles(f, "My total was closer than Zacks, but Zacks was closer on every line",
+           "Q3 2026 revenue forecast errors by line. My errors offset each other; adding them up without signs: \\$82M for me, \\$52M for Zacks.",
+           "Zacks consensus from its Q3 preview (day before the report); prediction markets implied from its transaction-revenue estimate. Reported: Robinhood, Oct 27, 2026.")
+    plt.subplots_adjust(left=0.22, right=0.97, top=0.83, bottom=0.17)
+    save(f, "fig9_vs_zacks.png")
