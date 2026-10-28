@@ -28,7 +28,7 @@
 4. **Prediction markets already bring in more than crypto:** $156M vs $100M in Q2 2026, about a year after launch.
 5. **If customers trade less, profit falls twice as fast as revenue.** A 30% drop in trading would cut revenue by 18% but operating profit by 37%.
 6. **The stock is priced well above what its businesses are worth at competitors' prices.** Valuing each business like its closest listed competitor gives about $57B; the stock market valued Robinhood at $89B. Investors are paying about $32B extra, betting that fast growth continues.
-7. **My Q3 forecast landed within 0.6% of reported revenue**, and was more accurate line by line than the Zacks consensus. The misses taught more than the hit (see [Q3 2026 forecast](#q3-2026-forecast-and-how-it-did)).
+7. **My Q3 forecast landed within 0.6% of reported revenue**, and was more accurate line by line than the Zacks consensus. The misses taught more than the hit (see [What I got wrong, and why](#what-i-got-wrong-and-why)).
 
 ![Revenue by line](figures/fig1_revenue_mix.png)
 
@@ -144,14 +144,16 @@ Each business is valued like its closest listed competitor, using value ÷ reven
 
 ![Me vs Zacks](figures/fig9_vs_zacks.png)
 
-**Where I was wrong, and why:**
+### What I got wrong, and why
 
 1. **Trading activity was right; earnings per trade weren't.** I predicted activity almost exactly (options contracts 906M vs 905M; stocks traded $998B vs $992B; prediction-market contracts 16.3B vs 16.4B). But Robinhood earned 1.22 bps per dollar of stock traded instead of Q2's 1.35 (its lowest ever), and 1.05¢ per prediction contract instead of 1.15¢. Zacks expected the lower stock revenue; I used Q2's rate, which was at the top of its recent range. On prediction markets Zacks was also too high, so that drop surprised others too.
 2. **Net interest (−$26M, my biggest miss).** I held it flat, but Robinhood's monthly margin book (money lent to customers) had grown about 7% by July–August. Growing net interest with it would have given $417M vs $415M reported. The data was there; I didn't use it.
 3. **Subscriptions & Banking (+$16M).** I grew it with Gold subscribers, but its Q2 jump (from $85M to $143M) came mostly from Trump Account fees, not Gold. It stayed flat at $142M even as Gold grew to 5.2M. Holding it flat would have been almost exact. I mistook a one-off jump for a trend.
 4. **The total hid the misses.** Errors in opposite directions cancelled out. Fixing items 2 and 3 would have made those lines nearly exact but moved the total further away (+1.4%), because nothing would have offset item 1 anymore. Forecasts should be judged line by line.
 
-**Next time:** model net interest from the monthly margin book; split Gold from Trump Account fees; use a range of recent earnings per trade instead of only the last quarter's; score every line.
+### What I'd do differently next quarter
+
+ model net interest from the monthly margin book; split Gold from Trump Account fees; use a range of recent earnings per trade instead of only the last quarter's; score every line.
 
 ---
 
