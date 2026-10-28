@@ -1,8 +1,8 @@
 """
-Charts for the research note (note/figures/). One consistent color per vertical across
+Charts for the README (figures/). One consistent color per vertical across
 every chart; grey for lines that are not analyzed.
 
-Run:  python src/charts_note.py
+Run:  python src/charts.py
 """
 from pathlib import Path
 
@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
-FIG = ROOT / "note" / "figures"
+FIG = ROOT / "figures"
 FIG.mkdir(parents=True, exist_ok=True)
 
 q = pd.read_csv(ROOT / "data/processed/quarters.csv")

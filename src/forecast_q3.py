@@ -22,6 +22,9 @@ ROOT = Path(__file__).resolve().parents[1]
 q = pd.read_csv(ROOT / "data/processed/quarters.csv")
 t = pd.read_csv(ROOT / "data/processed/take_rates.csv")
 m = pd.read_csv(ROOT / "data/raw/monthly_metrics.csv").set_index("month")
+# The forecast was made on Oct 18, 2026 with data through Q2 2026; keep it that way on reruns.
+q = q[q.quarter <= "2026Q2"]
+t = t[t.quarter <= "2026Q2"]
 OUT = ROOT / "outputs"
 OUT.mkdir(exist_ok=True)
 
